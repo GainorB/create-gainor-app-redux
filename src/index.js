@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import App from './components/App';
+import App from './App';
 import store from './store';
 
 if (process.env.NODE_ENV === 'development') {
@@ -9,8 +10,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <Route component={App} />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('app')
 );

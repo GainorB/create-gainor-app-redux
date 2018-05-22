@@ -2,12 +2,12 @@
 
 A boilerplate application for creating react apps with redux.
 
-Includes everything here: https://github.com/GainorB/create-gainor-app
+Includes everything found her: https://github.com/GainorB/create-gainor-app
 
 # Redux Data Flow
 
-1.  **View:** React Components that fire actions to the store
-2.  **Store:** includes state which sends state to components
+1.  **View:** React Components that fire actions to the Action Creators, that fire actions to the store
+2.  **Store:** includes state which sends state to connected components
 3.  **Reducers:** pure functions that specify how application state should change in response to actions. State is immutable, essentially recreated as new state and returned to component to react accordingly.
 
 # Three Principles
@@ -34,4 +34,4 @@ Reducers specify how the application's state changes in response to actions sent
 
 1.  redux-thunk: allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. The inner function receives the store methods dispatch and getState as parameters.
 
-2.  redux-promise: allows
+2.  redux-promise: lets you dispatch a Promise async action, and dispatches a normal action when the Promise resolves.
