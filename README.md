@@ -1,64 +1,37 @@
-# create-gainor-app
+# create-gainor-app-redux
 
-A boilerplate application for creating react apps. Includes hot module replacement and webpack's dev server. Also comes configured with ESLint and Prettier. :)
+A boilerplate application for creating react apps with redux.
 
-# Scripts
+Includes everything here: https://github.com/GainorB/create-gainor-app
 
-When **webpack-dashboard** is enabled, update dev start script to:
+# Redux Data Flow
 
-```javscript
- "scripts": {
-    "dev": "webpack-dashboard webpack-dev-server --mode development --open --hot",
- }
-```
+1.  **View:** React Components that fire actions to the store
+2.  **Store:** includes state which sends state to components
+3.  **Reducers:** pure functions that specify how application state should change in response to actions. State is immutable, essentially recreated as new state and returned to component to react accordingly.
 
-# DEPENDENCIES
+# Three Principles
 
-* React
-* ReactDOM
+1.  Single source of truth: The state of your whole application is stored in an object tree within a single store.
+2.  State is read-only: The only way to change the state is to emit an action, an object describing what happened.
+3.  Changes are made with pure functions: Reducers are just pure functions that take the previous state and an action, and return the next state. Remember to return new state objects, instead of mutating the previous state.
 
-# DEV DEPENDENCIES
+# Actions
 
-* **html-webpack-plugin:** Simplifies creation of HTML files to serve your webpack bundles
-* **styled-jsx:** Full, scoped and component-friendly CSS support for JSX
-* **style-loader:** Adds CSS to the DOM by injecting a <style> tag
-* **css-loader:** interprets @import and url() like import/require() and will resolve them.
-* **file-loader:** instructs webpack to emit the required object as file and to return its public URL
-* **image-webpack-loader:** Minify PNG, JPEG, GIF, SVG and WEBP images with imagemin
-* **webpack-dashboard:** A CLI dashboard for webpack dev server
-* **clean-webpack-plugin:** A webpack plugin to remove your build folder(s) before building
-* **friendly-errors-webpack-plugin:** Recognizes certain classes of webpack errors and cleans, aggregates and prioritizes them to provide a better Developer Experience.
+Actions are payloads of information that send data from your application to your store. They are the only source of information for the store.
 
-## webpack
+Actions are plain JavaScript objects. Actions must have a type property that indicates the type of action being performed. Types should typically be defined as string constants. Once your app is large enough, you may want to move them into a separate module.
 
-To compile & bundle assets together into one file to serve to the browser
+# Action Creators
 
-* **webpack:**
-* **webpack-dev-server:**
-  Use webpack with a development server that provides live reloading. This should be used for development only.
-* **webpack-cli:** allows me to run webpack commands. Will use for the build script
-* **dotenv-webpack:** dotenv-webpack wraps dotenv and Webpack.DefinePlugin. As such, it does a text replace in the resulting bundle for any instances of process.env.
-* **webpack-manifest-plugin:** will generate a manifest.json file in your root output directory with a mapping of all source file names to their corresponding output file
-* **extract-text-webpack-plugin@next:** Extract text from a bundle, or bundles, into a separate file: instead of inlining the CSS in JS, we create a separate style.css file that loads in parallel.
+Action creators are exactly that—functions that create actions.
 
-## babel
+# Reducers
 
-Turn ES6 (classes, imports, etc..) code into readable vanilla ES5
+Reducers specify how the application's state changes in response to actions sent to the store. Remember that actions only describe what happened, but don't describe how the application's state changes. In Redux, all the application state is stored as a single object. It's a good idea to think of its shape before writing any code.
 
-* **babel-core:** Babel compiler core.
-* **babel-loader:** This package allows transpiling JavaScript files using Babel and webpack.
-* **babel-preset-env:** Babel preset that automatically determines the Babel plugins you need based on your supported environments. Compiles ES6 and beyond.
-* **babel-preset-react:** Transform JSX
-* **babel-plugin-transform-class-properties:** https://reactjs.org/docs/handling-events.html
+# Middleware
 
-## INSTALL
+1.  redux-thunk: allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. The inner function receives the store methods dispatch and getState as parameters.
 
-npm i react react-dom prop-types styled-jsx dotenv-webpack
-
-### webpack
-
-npm i -D webpack webpack-dev-server webpack-cli css-loader style-loader html-webpack-plugin image-webpack-loader file-loader clean-webpack-plugin extract-text-webpack-plugin@next
-
-### babel
-
-npm i -D babel-core babel-loader babel-preset-env babel-preset-react babel-plugin-transform-class-properties
+2.  redux-promise: allows
