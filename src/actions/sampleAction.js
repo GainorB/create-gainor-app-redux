@@ -1,5 +1,5 @@
 // IMPORT TYPES
-import * as actions from './actions';
+import * as actions from './index';
 import api from '../utils/api';
 
 // EXPORT A FUNCTION TO BE USED IN COMPONENT TO DISPATCH ACTIONS
