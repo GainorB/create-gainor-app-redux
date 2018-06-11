@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 // IMPORT ACTIONS
-import { functionName } from '../actions/sampleAction';
+import { functionName } from './actions/sampleAction';
 // COMPONENTS
 import Home from './components/Home';
 
