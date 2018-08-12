@@ -1,22 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 // IMPORT ACTIONS
 import { functionName } from './actions/sampleAction';
+
 // COMPONENTS
 import Home from './components/Home';
 
-const App = ({ location }) => (
+const App = () => (
   <div>
     <h1>Hello Gainor!</h1>
-    <Route location={location} path="/" exact component={Home} />
+    <Route path="/" exact component={Home} />
   </div>
 );
 
-App.propTypes = {
-  location: PropTypes.object.isRequired,
-};
+// App.propTypes = {};
 
 const mapStateToProps = state => ({
   // THIS KEY WILL GET EXPOSED TO CURRENT COMPONENT AS A PROP
