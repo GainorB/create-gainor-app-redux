@@ -78,6 +78,7 @@ module.exports = {
   },
   // creates the template for the index.html file that react is injected into
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.HashedModuleIdsPlugin(),
     new FriendlyErrorsWebpackPlugin(), // easier to read error messages
     new CleanWebpackPlugin(['dist']), // deletes the build folder in between builds
@@ -113,6 +114,7 @@ module.exports = {
     disableHostCheck: true, // fix this error: Invalid Host header
     https: false, // enable SSL for localhost environment?
     port: 3000,
+    hot: true,
     quiet: true, // turns off webpack output including error message because FriendlyErrorsWebpackPlugin is enabled
     // proxy: [
     //   {
